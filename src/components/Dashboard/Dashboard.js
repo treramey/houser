@@ -2,10 +2,12 @@ import React, { Component } from "react";
 import House from "../House/House";
 import axios from "axios";
 import "./Dashboard.css";
+import store, { UPDATE_HOUSES } from "../../Redux/store";
 
 export default class Dashboard extends Component {
   constructor() {
     super();
+    const reduxState = store.getState();
     this.state = {
       houses: [],
     };
