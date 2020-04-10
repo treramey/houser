@@ -4,8 +4,15 @@ const express = require("express");
 const massive = require("massive");
 const app = express();
 
+app.use(express.json());
+
 // DECONSTRUCTIONS-----------------------------------------------------------------------
 const { SERVER_PORT, SERVER_CONECTION } = process.env;
+const {
+  getHouses,
+  addHouses,
+  deleteHouses,
+} = require("./controllers/controller");
 
 //MASSIVE--------------------------------------------------------------------------------
 
@@ -27,3 +34,7 @@ massive({
   });
 
 //ENDPOINTS----------------------------------------------------------------------------
+
+app.get("/api/houses", getHouses);
+app.post("/api/houses", addHouses);
+app.delete("/api/houses/:id", deleteHouses);
